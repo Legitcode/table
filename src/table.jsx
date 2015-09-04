@@ -4,9 +4,10 @@ import Rows from './rows'
 
 export default class Table extends React.Component{
   render(){
+    let attributes = this.props
+    delete attributes.rows
+    
     return(
-      let attributes = this.props
-      delete attributes.rows
       <table {...attributes}>
         <Head row={this.props.rows[0]}/>
         <Rows rows={this.props.rows} />
