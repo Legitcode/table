@@ -1,6 +1,6 @@
 {
   "name": "react-legit-table",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "the simplest table component out there",
   "main": "lib/table.js",
   "scripts": {
