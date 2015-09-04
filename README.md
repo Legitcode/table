@@ -7,7 +7,7 @@ I know what you're thinking... Yet another one of these things, right? I was usi
 
 ###Importing and setup
 ~~~js
-import {Head, Rows} from 'react-legit-table'
+import Table from 'react-legit-table'
 
 let rows = [
   {
@@ -29,8 +29,7 @@ let rows = [
 render(){
   return (
     <table style={{height: 500}} className="table table-bordered">
-      <Head row={row[0]} />
-      <Rows rows={rows} />
+      <Table rows={rows} />
     </table>
   )
 }
@@ -38,6 +37,7 @@ render(){
 
 The only thing the component expects other than a simple, regular ol' javascript objects, is an id column to be present. This is for setting the key on the child nodes.
 
-###Requests?
+
+##Requests?
 
 I want to keep this simple and it has been perfect for my use case so far, but I'd love to hear suggestions.
