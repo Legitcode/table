@@ -1,0 +1,32 @@
+{
+  "name": "react-legit-table",
+  "version": "0.0.1",
+  "description": "the simplest table component out there",
+  "main": "lib/table.js",
+  "scripts": {
+    "compile": "babel src --stage 0 --out-dir lib;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zackify/legit-table.git"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "table",
+    "react-table",
+    "bootstrap"
+  ],
+  "author": "Zach Silveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zackify/legit-table/issues"
+  },
+  "homepage": "https://github.com/zackify/legit-table#readme",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  }
+}
