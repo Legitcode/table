@@ -3,7 +3,7 @@
 
 ##Another Table Component....
 
-I know what you're thinking... Yet another one of these things, right? I was using Facebook's Fixed Data Table until I realized how big of a library it is. All I needed was a simple html table, so I made two little components that make up this library. It's as simple as it can be, and works great with bootstrap:
+I know what you're thinking... Yet another one of these things, right? I was using Facebook's Fixed Data Table until I realized how big of a library it is. All I needed was a simple html table. It's as simple as it can be, and works great with bootstrap:
 
 ###Importing and setup
 ~~~js
@@ -28,9 +28,7 @@ let rows = [
 ~~~js
 render(){
   return (
-    <table style={{height: 500}} className="table table-bordered">
-      <Table rows={rows} />
-    </table>
+    <Table className="table table-bordered" rows={rows} />
   )
 }
 ~~~
