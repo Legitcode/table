@@ -11,15 +11,13 @@ export default class Rows extends React.Component{
 
     for(let row of this.props.rows){
       let rowList = [];
+      let id = row[Object.keys(row)[0]]
 
       for(let item in row){
-        console.log(item);
-        if (!(this.props.skipId && item === "id")) {
-          rowList.push(<td key={`${row.id}-${row[item]}`}>{row[item]}</td>)
-        }
+        rowList.push(<td key={`${id}-${row[item]}`}>{row[item]}</td>)
       }
 
-      rows.push(<tr key={`row-${row.id}`}>{rowList}</tr>)
+      rows.push(<tr key={`row-${id}`}>{rowList}</tr>)
     }
 
     return rows;

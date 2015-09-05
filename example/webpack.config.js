@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
   entry: {
     'basic': [
-      'webpack-dev-server/client?http://localhost:8080/',
+      'webpack-dev-server/client?http://localhost:8881/',
       'webpack/hot/only-dev-server',
       './example/basic.jsx'
     ]
@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: __dirname,
     filename: "[name].js",
-    publicPath: 'http://localhost:8080/',
+    publicPath: 'http://localhost:8881/',
     chunkFilename: '[id].chunk.js',
     sourceMapFilename: '[name].map'
   },

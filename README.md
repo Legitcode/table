@@ -33,7 +33,7 @@ render(){
 }
 ~~~
 
-The only thing the component expects other than a simple, regular ol' javascript objects, is an id column to be present. This is for setting the key on the child nodes.
+The component expects simple, regular ol' javascript objects inside of an array.
 
 
 ##Requests?

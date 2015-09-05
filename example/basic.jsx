@@ -18,7 +18,7 @@ export default class Basic extends React.Component {
 
   render() {
     return (
-      <Table className="table table-bordered" skipId={true} rows={rows} />
+      <Table className="table table-bordered" rows={rows} />
     );
   }
 }
