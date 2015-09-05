@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel src --stage 0 --out-dir lib;",
-    "example": "webpack-dev-server --config ./example/webpack.config.js --hot --port 8881"
+    "dev-server": "webpack-dev-server --config ./example/webpack.config.js --hot --port 8881",
+    "example": "webpack --config ./example/webpack.config.js"
   },
   "repository": {
     "type": "git",
