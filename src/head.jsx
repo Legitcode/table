@@ -6,12 +6,11 @@ export default class Head extends React.Component{
     row: React.PropTypes.object
   }
 
-  headings(){
-    let headings = []
-    for(let name in this.props.row){
-      headings.push(<th key={name}>{name}</th>)
-    }
-    return headings
+  headings() {
+    return Object.keys(this.props.row).map((name) => {
+      if (this.props.skipId && name === "id") return;
+      return <th key={name}>{name}</th>;
+    });
   }
 
   render(){

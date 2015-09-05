@@ -4,13 +4,13 @@ import Rows from './rows'
 
 export default class Table extends React.Component{
   render(){
-    let attributes = this.props
-    delete attributes.rows
-    
-    return(
+    let { rows, skipId, ...attributes } = this.props,
+        headerRow = rows[0];
+        
+    return (
       <table {...attributes}>
-        <Head row={this.props.rows[0]}/>
-        <Rows rows={this.props.rows} />
+        <Head row={headerRow} skipId={skipId} />
+        <Rows rows={rows} skipId={skipId} />
       </table>
     )
   }
