@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/zackify/legit-table.git"
+    "url": "git+ssh://git@github.com/legitcode/table.git"
   },
   "keywords": [
     "react-component",
@@ -23,9 +23,9 @@
   "author": "Zach Silveira",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zackify/legit-table/issues"
+    "url": "https://github.com/legitcode/table/issues"
   },
-  "homepage": "https://github.com/zackify/legit-table#readme",
+  "homepage": "https://github.com/legitcode/table#readme",
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.23",
