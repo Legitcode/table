@@ -1,10 +1,11 @@
 {
   "name": "react-legit-table",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "the simplest table component out there",
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel src --stage 0 --out-dir lib;",
+    "prepublish": "babel src --stage 0 --out-dir lib;",
     "dev-server": "webpack-dev-server --config ./example/server.config.js --hot --port 8881",
     "example": "webpack --config ./example/example.config.js"
   },
