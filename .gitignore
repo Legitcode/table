@@ -2,5 +2,4 @@ node_modules
 rethinkdb_data
 npm-debug.log
 example/main.js
-lib
 .DS_Store
