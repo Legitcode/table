@@ -8,7 +8,6 @@ export default class Head extends React.Component{
 
   headings() {
     return Object.keys(this.props.row).map((name) => {
-      if (this.props.skipId && name === "id") return;
       return <th key={name}>{name}</th>;
     });
   }
