@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from '../src/index';
+import Table from '../src/table';
 
 var rows = [
   {
