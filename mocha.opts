@@ -1,0 +1,4 @@
+--require ./src/__tests__/setup
+--full-trace
+--compilers js:babel/register
+--recursive ./src/__tests__/**/*.jsx

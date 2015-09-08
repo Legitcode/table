@@ -35,6 +35,13 @@ render(){
 
 The component expects simple, regular ol' javascript objects inside of an array.
 
+###Options
+
+`capitalize` Optionally, turn off capitalization of header row. True by default.
+
+~~~js
+<Table rows={rows} capitalize={false} />
+~~~
 
 ##Requests?
 
