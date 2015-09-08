@@ -12,12 +12,18 @@ export default class Head extends React.Component{
 
   headings() {
     return Object.keys(this.props.row).map((name) => {
-      return <th key={name}>{this.props.capitalize ? this.capitalize(name) : name}</th>;
+      return <th key={name}>{this.props.capitalize ? this.titleize(name) : name}</th>;
     });
   }
 
-  capitalize(str) {
-    return `${str.charAt(0).toUpperCase()}${str.substring(1)}`
+  titleize(str) {
+    let words = str.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ').split(' ');
+
+    let array = words.map((word) => {
+      return `${word.charAt(0).toUpperCase()}${word.substring(1)}`
+    });
+
+    return array.join(' ').trim();
   }
 
   render(){
