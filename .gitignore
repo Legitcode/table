@@ -3,3 +3,6 @@ rethinkdb_data
 npm-debug.log
 example/main.js
 .DS_Store
+
+# Ignore all vim swap files
+*.swp
