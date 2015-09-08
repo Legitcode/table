@@ -4,11 +4,11 @@ import Rows from './rows'
 
 export default class Table extends React.Component{
   render(){
-    let { rows, ...attributes } = this.props
+    let { rows, capitalize, ...attributes } = this.props
 
     return (
       <table {...attributes}>
-        <Head row={rows[0]} />
+        <Head row={rows[0]} capitalize={capitalize} />
         <Rows rows={rows} />
       </table>
     )
