@@ -2,7 +2,7 @@ import React from 'react'
 
 export default class Head extends React.Component{
   static propTypes = {
-    row: React.PropTypes.object,
+    row: React.PropTypes.object.isRequired,
     capitalize: React.PropTypes.bool
   }
 
@@ -26,7 +26,7 @@ export default class Head extends React.Component{
     return array.join(' ').trim();
   }
 
-  render(){
+  render() {
     return (
       <thead>
         <tr>
