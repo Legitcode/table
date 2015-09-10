@@ -16,11 +16,10 @@ describe('Table component', () => {
   var table = new Table({ rows: [] });
 
   describe('#render', () => {
-    it('should not render the header or rows if the rows are empty', () => {
+    it('should not render the component if the rows are empty', () => {
       let table = createShallowComponent(Table, { rows: [] });
 
-      expect(table.props.children[0]).to.be.undefined;
-      expect(table.props.children[1]).to.be.undefined;
+      expect(table).to.be.null;
     });
 
     it('should render the header and rows if the rows are not empty', () => {

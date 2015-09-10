@@ -9,18 +9,14 @@ export default class Table extends React.Component{
   }
 
   render() {
-    let { rows, capitalize, ...attributes } = this.props,
-        header, tableRows;
-    
-    if (rows.length > 0) {
-      header = <Head row={rows[0]} capitalize={capitalize} />;
-      tableRows = <Rows rows={rows} />;
-    }
+    if (this.props.rows.length === 0) return null;
 
+    let { rows, capitalize, ...attributes } = this.props;
+    
     return (
       <table {...attributes}>
-        { header }
-        { tableRows }
+        <Head row={rows[0]} capitalize={capitalize} />
+        <Rows rows={rows} />
       </table>
     )
   }
