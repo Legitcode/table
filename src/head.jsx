@@ -1,4 +1,5 @@
 import React from 'react'
+import uniqueId from './uniqueId'
 
 export default class Head extends React.Component{
   static propTypes = {
@@ -12,7 +13,7 @@ export default class Head extends React.Component{
 
   headings() {
     return Object.keys(this.props.row).map((name) => {
-      return <th key={name}>{this.props.capitalize ? this.titleize(name) : name}</th>;
+      return <th key={uniqueId(name)}>{this.props.capitalize ? this.titleize(name) : name}</th>;
     });
   }
 

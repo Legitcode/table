@@ -1,4 +1,5 @@
 import React from 'react'
+import uniqueId from './uniqueId'
 
 export default class Rows extends React.Component{
 
@@ -14,10 +15,10 @@ export default class Rows extends React.Component{
       let id = row[Object.keys(row)[0]]
 
       for(let item in row){
-        rowList.push(<td key={`${id}-${row[item]}`}>{row[item]}</td>)
+        rowList.push(<td key={uniqueId(row[item])}>{row[item]}</td>)
       }
 
-      rows.push(<tr key={`row-${id}`}>{rowList}</tr>)
+      rows.push(<tr key={uniqueId(id)}>{rowList}</tr>)
     }
 
     return rows;

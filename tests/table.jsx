@@ -9,7 +9,7 @@ import {
 import Table from '../src/table';
 import Head from '../src/head';
 import Rows from '../src/rows';
-
+import Test from './tests'
 /* globals describe, it */
 
 describe('Table component', () => {
@@ -36,3 +36,30 @@ describe('Table component', () => {
     });
   });
 });
+
+class TestComponent extends React.Component {
+  constructor(){
+    super()
+    this.state = {}
+  }
+
+  render(){
+    return <div>{this.state.test}</div>
+  }
+}
+
+function modifyState(state){
+  this.component.setState(state)
+}
+
+function grabElements(selector){
+  let elements = TestUtils.scryRenderedDOMComponentsWithTag(this.component,'div')
+  this.helpers[selector] = elements
+}
+
+Test(<TestComponent/>)
+.use(modifyState, {test: 'test'})
+.use(grabElements, 'div') // {class: 'class'}
+.end((component, helpers) => {
+  expect(helpers.div[0].props.children).to.be.equal('test')
+})
