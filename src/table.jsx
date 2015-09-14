@@ -11,12 +11,17 @@ export default class Table extends React.Component{
   render() {
     if (this.props.rows.length === 0) return null;
 
-    let { rows, capitalize, ...attributes } = this.props;
-    
+    let {
+      rows,
+      capitalize,
+      modify,
+      ...attributes
+    } = this.props;
+
     return (
       <table {...attributes}>
         <Head row={rows[0]} capitalize={capitalize} />
-        <Rows rows={rows} />
+        <Rows rows={rows} modify={modify || {}}/>
       </table>
     )
   }

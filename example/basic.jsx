@@ -15,10 +15,17 @@ var rows = [
 ];
 
 export default class Basic extends React.Component {
-
+  modifyId(id){
+    return `the user's is ${id}`
+  }
   render() {
     return (
-      <Table className="table table-bordered" rows={rows} />
+      <Table
+      className="table table-bordered"
+      rows={rows}
+      modify={{
+        id: this.modifyId
+      }}/>
     );
   }
 }

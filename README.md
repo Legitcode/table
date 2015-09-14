@@ -37,6 +37,27 @@ The component expects simple, regular ol' javascript objects inside of an array.
 
 ###Options
 
+**New in 0.2.7** `modify` accepts an object with keys equal to those in your rows object and the values are callbacks that will be called on rendering a row.
+
+**Example:**
+
+~~~js
+
+modifyId(id){
+  return `the user's id is ${id}`
+}
+
+render() {
+  return (
+    <Table
+    rows={rows}
+    modify={{
+      id: this.modifyId
+    }}/>
+  );
+}
+~~~
+
 `capitalize` Optionally, turn off capitalization of header row. True by default.
 
 ~~~js

@@ -15,7 +15,10 @@ export default class Rows extends React.Component{
       let id = row[Object.keys(row)[0]]
 
       for(let item in row){
-        rowList.push(<td key={uniqueId(row[item])}>{row[item]}</td>)
+        let value = row[item]
+        if(this.props.modify[item]) value = this.props.modify[item](row[item])
+
+        rowList.push(<td key={uniqueId(row[item])}>{value}</td>)
       }
 
       rows.push(<tr key={uniqueId(id)}>{rowList}</tr>)
