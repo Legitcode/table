@@ -31,7 +31,7 @@ describe('Head component', () => {
 
       expect(headings.length).to.equal(1);
       expect(headings[0].type).to.equal('th');
-      expect(headings[0].key).to.equal('foo');
+      expect(headings[0].key).to.equal('3-foo');
     });
   });
 
