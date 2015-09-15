@@ -43,8 +43,9 @@ The component expects simple, regular ol' javascript objects inside of an array.
 
 ~~~js
 
-modifyId(id){
-  return `the user's id is ${id}`
+modifyId(id, row){
+  //row is the current row object
+  return <a href={id}>{id}</a>
 }
 
 render() {
