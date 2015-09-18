@@ -1,25 +1,23 @@
-import {
-  React,
-  expect,
-  TestUtils,
-  createComponent,
-  createShallowComponent
-} from './test_helper';
-
+import Test from 'legit-tests'
 import Head from '../src/head';
+import { expect } from 'chai';
 
 /* globals describe, it */
 
 describe('Head component', () => {
   describe('initialize', () => {
     it('should default capitalize to true', () => {
-      let head = createComponent(Head, { row: { foo: "bar" } });
-      expect(head.props.capitalize).to.be.true;
+      Test(<Head row={{foo: 'bar'}}/>)
+      .test(({component}) => {
+        expect(component.props.capitalize).to.be.true;
+      })
     });
 
     it('should set capitalize to false if it is passed in', () => {
-      let head = createComponent(Head, { row: { foo: "bar" }, capitalize: false });
-      expect(head.props.capitalize).to.be.false;
+      Test(<Head row={{foo: 'bar'}} capitalize={false}/>)
+      .test(({component}) => {
+        expect(component.props.capitalize).to.be.false;
+      })
     });
   });
 

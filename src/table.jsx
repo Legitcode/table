@@ -5,7 +5,9 @@ import Rows from './rows'
 export default class Table extends React.Component{
   static propTypes = {
     rows: React.PropTypes.array.isRequired,
-    capitalize: React.PropTypes.bool
+    capitalize: React.PropTypes.bool,
+    modify: React.PropTypes.object
+
   }
 
   render() {

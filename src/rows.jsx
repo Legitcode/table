@@ -4,7 +4,8 @@ import uniqueId from './uniqueId'
 export default class Rows extends React.Component{
 
   static propTypes = {
-    rows: React.PropTypes.array
+    rows: React.PropTypes.array,
+    modify: React.PropTypes.object
   }
 
   rows(){

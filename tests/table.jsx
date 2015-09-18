@@ -1,16 +1,9 @@
-import {
-  React,
-  expect,
-  TestUtils,
-  createComponent,
-  createShallowComponent
-} from './test_helper';
-
+import Test from 'legit-tests';
 import Table from '../src/table';
 import Head from '../src/head';
 import Rows from '../src/rows';
-import Test from 'legit-tests'
-import {Find} from 'legit-tests/lib/middleware'
+import { expect } from 'chai';
+
 /* globals describe, it */
 
 describe('Table component', () => {
@@ -18,31 +11,34 @@ describe('Table component', () => {
 
   describe('#render', () => {
     it('should not render the component if the rows are empty', () => {
-      let table = createShallowComponent(Table, { rows: [] });
-
-      expect(table).to.be.null;
+      Test(<Table rows={[]}/>, {shallow: true})
+      .test(({component}) => {
+        expect(component).to.be.null;
+      })
     });
 
     it('should render the header and rows if the rows are not empty', () => {
-      let rows = [{foo: "1"}],
-          table = createShallowComponent(Table, { rows: rows });
+      let rows = [{foo: "1"}]
 
-      let head = table.props.children[0],
-          tableRows = table.props.children[1];
+      Test(<Table rows={rows}/>, {shallow: true})
+      .test(({component}) => {
+        let head = component.props.children[0],
+          tableRows = component.props.children[1];
 
-      expect(head.props).to.not.be.undefined;
-      expect(tableRows.props).to.not.be.undefined;
-      expect(head.props.row).to.equal(rows[0]);
-      expect(tableRows.props.rows).to.equal(rows);
+        expect(head.props).to.not.be.undefined;
+        expect(tableRows.props).to.not.be.undefined;
+        expect(head.props.row).to.equal(rows[0]);
+        expect(tableRows.props.rows).to.equal(rows);
+      })
     });
-    
+
     it('should correctly modify row', () => {
       let modify = (name) => {
         return `Name: ${name}`
       }
 
       Test(<Table rows={[{name: 'zach'}]} modify={{name: modify}}/>)
-      .use(Find, 'td')
+      .find('td')
       .test(({helpers}) => {
         expect(helpers.elements.td.props.children).to.be.equal('Name: zach')
       })
