@@ -12,8 +12,8 @@ describe('Table component', () => {
   describe('#render', () => {
     it('should not render the component if the rows are empty', () => {
       Test(<Table rows={[]}/>, {shallow: true})
-      .test(({component}) => {
-        expect(component).to.be.null;
+      .test(({instance}) => {
+        expect(instance).to.be.null;
       })
     });
 
@@ -21,9 +21,9 @@ describe('Table component', () => {
       let rows = [{foo: "1"}]
 
       Test(<Table rows={rows}/>, {shallow: true})
-      .test(({component}) => {
-        let head = component.props.children[0],
-          tableRows = component.props.children[1];
+      .test(({instance}) => {
+        let head = instance.props.children[0],
+          tableRows = instance.props.children[1];
 
         expect(head.props).to.not.be.undefined;
         expect(tableRows.props).to.not.be.undefined;
@@ -43,5 +43,36 @@ describe('Table component', () => {
         expect(helpers.elements.td.props.children).to.be.equal('Name: zach')
       })
     })
+
+    it('should correctly modify all rows', () => {
+      let modify = (value) => {
+        return `yo ${value}`
+      }
+
+      Test(<Table rows={[{name: 'zach', job: 'awesome'}]} modifyAll={modify}/>)
+      .find('td')
+      .test(({td}) => {
+        expect(td[0].props.children).to.be.equal('yo zach')
+        expect(td[1].props.children).to.be.equal('yo awesome')
+      })
+    })
+
+    it('should modify all rows and ignore individual modify ', () => {
+      let modify = (value) => {
+        return `yo ${value}`
+      }
+      
+      let modifyName = (value) => {
+        return `Name: ${value}`
+      }
+
+      Test(<Table rows={[{name: 'zach', job: 'awesome'}]} modifyAll={modify} modify={{name: modifyName}}/>)
+      .find('td')
+      .test(({td}) => {
+        expect(td[0].props.children).to.be.equal('yo zach')
+        expect(td[1].props.children).to.be.equal('yo awesome')
+      })
+    })
+
   });
 });

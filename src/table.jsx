@@ -23,7 +23,7 @@ export default class Table extends React.Component{
     return (
       <table {...attributes}>
         <Head row={rows[0]} capitalize={capitalize} />
-        <Rows rows={rows} modify={modify || {}}/>
+        <Rows rows={rows} modify={modify || {}} {...this.props}/>
       </table>
     )
   }
