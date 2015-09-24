@@ -75,10 +75,11 @@ describe('Table component', () => {
     })
 
     it('should hide id row', () => {
-      let modify = ({hidden}) => {
-          expect(hidden.id).to.be.equal(1)
+      let modify = ({hidden, value}) => {
+        expect(hidden.id).to.be.equal(1)
+        return value
       }
-      Test(<Table rows={[{id: 1, name: 'zach'}]} hide={['id']}/>)
+      Test(<Table rows={[{id: 1, name: 'zach'}]} hide={['id']} modifyAll={modify}/>)
       .find('td')
       .element(td => {
         expect(td.props.children).to.be.equal('zach');
