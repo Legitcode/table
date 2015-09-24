@@ -33,8 +33,8 @@ describe('Table component', () => {
     });
 
     it('should correctly modify row', () => {
-      let modify = (name) => {
-        return `Name: ${name}`
+      let modify = ({value}) => {
+        return `Name: ${value}`
       }
 
       Test(<Table rows={[{name: 'zach'}]} modify={{name: modify}}/>)
@@ -45,7 +45,7 @@ describe('Table component', () => {
     })
 
     it('should correctly modify all rows', () => {
-      let modify = (value) => {
+      let modify = ({value}) => {
         return `yo ${value}`
       }
 
@@ -58,11 +58,11 @@ describe('Table component', () => {
     })
 
     it('should modify all rows and ignore individual modify ', () => {
-      let modify = (value) => {
+      let modify = ({value}) => {
         return `yo ${value}`
       }
-      
-      let modifyName = (value) => {
+
+      let modifyName = ({value}) => {
         return `Name: ${value}`
       }
 
@@ -73,6 +73,17 @@ describe('Table component', () => {
         expect(td[1].props.children).to.be.equal('yo awesome')
       })
     })
+
+    it('should hide id row', () => {
+      let modify = ({hidden}) => {
+          expect(hidden.id).to.be.equal(1)
+      }
+      Test(<Table rows={[{id: 1, name: 'zach'}]} hide={['id']}/>)
+      .find('td')
+      .element(td => {
+        expect(td.props.children).to.be.equal('zach');
+      })
+    });
 
   });
 });

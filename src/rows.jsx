@@ -6,6 +6,7 @@ export default class Rows extends React.Component{
   static propTypes = {
     rows: React.PropTypes.array,
     modify: React.PropTypes.object,
+    hide: React.PropTypes.array,
     modifyAll: React.PropTypes.func
   }
 
@@ -13,13 +14,27 @@ export default class Rows extends React.Component{
     let rows = [];
 
     for(let row of this.props.rows){
-      let rowList = [];
+      let rowList = [],
+        hidden = {}
       let id = row[Object.keys(row)[0]]
+
+      if(this.props.hide){
+        this.props.hide.map(ignore => {
+          hidden[ignore] = row[ignore]
+          delete row[ignore]
+        })
+      }
 
       for(let item in row){
         let value = row[item]
-        if(this.props.modifyAll) value = this.props.modifyAll(row[item], item, row)
-        else if(this.props.modify[item]) value = this.props.modify[item](row[item], item, row)
+        let params = {
+          value: row[item],
+          key: item,
+          row,
+          hidden
+        }
+        if(this.props.modifyAll) value = this.props.modifyAll(params)
+        else if(this.props.modify[item]) value = this.props.modify[item](params)
 
         rowList.push(<td key={uniqueId(row[item])}>{value}</td>)
       }

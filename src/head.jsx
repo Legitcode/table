@@ -4,6 +4,7 @@ import uniqueId from './uniqueId'
 export default class Head extends React.Component{
   static propTypes = {
     row: React.PropTypes.object.isRequired,
+    hide: React.PropTypes.array,
     capitalize: React.PropTypes.bool
   }
 
@@ -13,6 +14,10 @@ export default class Head extends React.Component{
 
   headings() {
     return Object.keys(this.props.row).map((name) => {
+      if(this.props.hide){
+        let result = this.props.hide.map(ignore => ignore === name)
+        if(result) return true
+      }
       return <th key={uniqueId(name)}>{this.props.capitalize ? this.titleize(name) : name}</th>;
     });
   }

@@ -44,9 +44,9 @@ Optionally, use `modifyAll` to change every item.
 
 ~~~js
 
-modifyId(id, row){
+modifyId({hidden, value, key, row}){
   //row is the current row object
-  return <a href={id}>{id}</a>
+  return <a href={value}>{value}</a>
 }
 
 render() {
@@ -66,6 +66,19 @@ rows={rows}
 modifyAll={this.modify}
 />
 ~~~
+
+###hide
+
+```js
+let modify = ({hidden}) => {
+    expect(hidden.id).to.be.equal(1)
+}
+Test(<Table rows={[{id: 1, name: 'zach'}]} hide={['id']}/>)
+.find('td')
+.element(td => {
+  expect(td.props.children).to.be.equal('zach');
+})
+```
 
 `capitalize` Optionally, turn off capitalization of header row. True by default.
 
