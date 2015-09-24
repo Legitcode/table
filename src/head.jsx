@@ -13,11 +13,16 @@ export default class Head extends React.Component{
   }
 
   headings() {
-    return Object.keys(this.props.row).map((name) => {
-      if(this.props.hide){
-        let result = this.props.hide.map(ignore => ignore === name)
-        if(result) return true
-      }
+    let row = Object.assign({}, this.props.row)
+    if (this.props.hide) {
+      this.props.hide.map(ignore => {
+        Object.keys(this.props.row).map(key => {
+          if(key === ignore) delete row[key]
+        })
+      })
+    }
+
+    return Object.keys(row).map((name) => {
       return <th key={uniqueId(name)}>{this.props.capitalize ? this.titleize(name) : name}</th>;
     });
   }
