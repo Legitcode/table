@@ -14,27 +14,19 @@ export default class Head extends React.Component{
 
   headings() {
     let row = Object.assign({}, this.props.row)
-    if (this.props.hide) {
-      this.props.hide.map(ignore => {
-        Object.keys(this.props.row).map(key => {
-          if(key === ignore) delete row[key]
-        })
-      })
-    }
-
     return Object.keys(row).map((name) => {
-      return <th key={uniqueId(name)}>{this.props.capitalize ? this.titleize(name) : name}</th>;
-    });
+      return <th key={uniqueId(name)}>{this.props.capitalize ? this.titleize(name) : name}</th>
+    })
   }
 
   titleize(str) {
-    let words = str.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ').split(' ');
+    let words = str.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ').split(' ')
 
     let array = words.map((word) => {
       return `${word.charAt(0).toUpperCase()}${word.substring(1)}`
-    });
+    })
 
-    return array.join(' ').trim();
+    return array.join(' ').trim()
   }
 
   render() {

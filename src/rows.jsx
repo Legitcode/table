@@ -14,24 +14,15 @@ export default class Rows extends React.Component{
     let rows = [];
 
     for(let row of this.props.rows){
-      let rowList = [],
-        hidden = {}
+      let rowList = []
       let id = row[Object.keys(row)[0]]
-
-      if(this.props.hide){
-        this.props.hide.map(ignore => {
-          hidden[ignore] = row[ignore]
-          delete row[ignore]
-        })
-      }
 
       for(let item in row){
         let value = row[item]
         let params = {
           value: row[item],
           key: item,
-          row,
-          hidden
+          row
         }
         if(this.props.modifyAll) value = this.props.modifyAll(params)
         else if(this.props.modify[item]) value = this.props.modify[item](params)

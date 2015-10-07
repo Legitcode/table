@@ -66,20 +66,6 @@ modifyAll={this.modify}
 />
 ~~~
 
-###hide
-
-```js
-let modify = ({hidden, value}) => {
-  expect(hidden.id).to.be.equal(1)
-  return value
-}
-Test(<Table rows={[{id: 1, name: 'zach'}]} hide={['id']} modifyAll={modify}/>)
-.find('td')
-.element(td => {
-  expect(td.props.children).to.be.equal('zach');
-})
-```
-
 `capitalize` Optionally, turn off capitalization of header row. True by default.
 
 ~~~js
